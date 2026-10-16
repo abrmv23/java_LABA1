@@ -1,4 +1,3 @@
-
 import java.util.InputMismatchException;
 import java.util.Locale;
 import java.util.Scanner;
@@ -74,12 +73,14 @@ public class Main {
                      9 - умножить A на число
                     10 - обратная к A
                     11 - показать все матрицы
-                    12 - ввести матрицы заново
-                    13 - записать результат в A
+                    12 - ввести матрицы заново (A и B)
+                    13 - записать результат в A 
                     14 - записать результат в B
+                    15 - ввести заново только матрицу A (B оставить)
+                    16 - ввести заново только матрицу B (A оставить)
                      0 - выход""");
 
-            int cmd = readInt("Выберите пункт: ", 0, 14);
+            int cmd = readInt("Выберите пункт: ", 0, 16);
             try {
                 switch (cmd) {
                     case 1 -> { result = a.add(b); show("A + B", result); }
@@ -128,6 +129,16 @@ public class Main {
                             b = result.copy();
                             show("B (обновлена)", b);
                         }
+                    }
+                    case 15 -> {
+                        a = readMatrix("A");
+                        result = null;
+                        System.out.println("Матрица A обновлена, результат сброшен.");
+                    }
+                    case 16 -> {
+                        b = readMatrix("B");
+                        result = null;
+                        System.out.println("Матрица B обновлена, результат сброшен.");
                     }
                     case 0 -> running = false;
                     default -> System.out.println("Неизвестная команда");
